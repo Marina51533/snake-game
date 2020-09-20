@@ -1,0 +1,26 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-image: url(../img/skake_back.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1{
+  color:white;
+  padding-top: 10vh;
+}
+.field{
+  height: 500px;
+  width: 500px;
+  background-color: rgb(227, 236, 250);
+  box-shadow: rgb(56, 56, 56) 5px 10px 15px 10px;
+  margin: 0 auto;
+}
+.nav_elem{
+  height: 20vh;
+}
