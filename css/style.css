@@ -11,28 +11,33 @@ h1{
   padding-top: 10vh;
 }
 .field{
-  height: 500px;
-  width: 500px;
+  height: 300px;
+  width: 300px;
   display: flex;
   flex-wrap: wrap;
   background-color: rgb(227, 236, 250);
   box-shadow: rgb(56, 56, 56) 5px 10px 15px 10px;
   margin: 0 auto;
+  margin-bottom: 100px;
 }
 .elem{
-  height: 50px;
-  width:50px;
-  padding:5px;
+  height: 30px;
+  width:30px;
+  padding:3px;
 }
 .snakeBody{
-  background-color: rgb(145, 152, 255);
+  background-color: rgb(255, 145, 213);
   border-radius: 50%;
 }
 .snakeHead{
-  background-color: rgb(25, 0, 139);
+  background-color: rgb(139, 0, 127);
   border-radius: 50%;
 }
 .mouse{
-  background-color: rgb(139, 0, 0);
+  background-color: rgb(73, 252, 29);
   border-radius: 10%;
+}
+.input{
+  text-align: center;
+  margin:50px;
 }

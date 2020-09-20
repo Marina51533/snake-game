@@ -65,6 +65,10 @@ createMouse();
 
 let direction='right';
 let steps = false;
+let score=0;
+let input=document.getElementById('input_score');
+
+input.value=`Your score: ${score}`;
 //Move of the snake to the right
 function move(){
   let snakeCoordinates=[snakeBody[0].getAttribute('posX'),snakeBody[0].getAttribute('posY')];//point of beginning this move
@@ -109,6 +113,8 @@ function move(){
        let b= snakeBody[snakeBody.length-1].getAttribute('posY');
       snakeBody.push(document.querySelector('[posX="' + a + '"][posY="' + b + '"]'));
       createMouse();
+      score++;
+      input.value=`Your score: ${score}`;
       }
 
       if(snakeBody[0].classList.contains('snakeBody')){
