@@ -4,19 +4,17 @@
   box-sizing: border-box;
 }
 
-body{
-  background-image: url(../img/skake_back.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+
 
 h1{
-  color:white;
+  color:rgb(243, 10, 10);
   padding-top: 10vh;
 }
 .field{
   height: 500px;
   width: 500px;
+  display: flex;
+  flex-wrap: wrap;
   background-color: rgb(227, 236, 250);
   box-shadow: rgb(56, 56, 56) 5px 10px 15px 10px;
   margin: 0 auto;
@@ -26,6 +24,15 @@ h1{
   width:50px;
   padding:5px;
 }
-.nav_elem{
-  height: 20vh;
+.snakeBody{
+  background-color: rgb(145, 152, 255);
+  border-radius: 50%;
+}
+.snakeHead{
+  background-color: rgb(25, 0, 139);
+  border-radius: 50%;
+}
+.mouse{
+  background-color: rgb(139, 0, 0);
+  border-radius: 10%;
 }
