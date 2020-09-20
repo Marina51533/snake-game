@@ -62,3 +62,33 @@ mouse.classList.add('mouse');
 
 }
 createMouse();
+
+let direction='right'
+//Move of the snake to the right
+function move(){
+  let snakeCoordinates=[snakeBody[0].getAttribute('posX'),snakeBody[0].getAttribute('posY')];//point of beginning this move
+  snakeBody[0].classList.remove('snakeHead');//remove the class
+  snakeBody[snakeBody.length-1].classList.remove('snakeBody');//remove the class
+  snakeBody.pop();//delete it at all
+
+  if(snakeCoordinates[0]<10){//if the snake goes to the wall
+  snakeBody.unshift(document.querySelector('[posX = "' + (+snakeCoordinates[0] + 1) + '"][posY="' + snakeCoordinates[1] + '"]'));
+  } else{
+  snakeBody.unshift(document.querySelector('[posX = "1"][posY="' + snakeCoordinates[1] + '"]'));
+  }//we change its coordinates
+
+  snakeBody[0].classList.add('snakeHead');//added classes new coordinates
+  for(let i=0;i<snakeBody.length;i++){
+    snakeBody[i].classList.add('snakeBody');
+  }
+}
+let interval = setInterval(move,300)//interval for move
+
+//what happens under press on a key
+
+document.addEventListener('keyup',function (e) {
+  var key = e.key
+   if(key === 37){
+    console.log('37')
+  }
+});
