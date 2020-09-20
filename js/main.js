@@ -63,32 +63,84 @@ mouse.classList.add('mouse');
 }
 createMouse();
 
-let direction='right'
+let direction='right';
+let steps = false;
 //Move of the snake to the right
 function move(){
   let snakeCoordinates=[snakeBody[0].getAttribute('posX'),snakeBody[0].getAttribute('posY')];//point of beginning this move
   snakeBody[0].classList.remove('snakeHead');//remove the class
   snakeBody[snakeBody.length-1].classList.remove('snakeBody');//remove the class
   snakeBody.pop();//delete it at all
+  
+  if(direction=='right'){
+    if(snakeCoordinates[0]<10){//if the snake goes to the wall - looking for X-coordinate
+      snakeBody.unshift(document.querySelector('[posX = "' + (+snakeCoordinates[0] + 1) + '"][posY="' + snakeCoordinates[1] + '"]'));
+      } else{
+      snakeBody.unshift(document.querySelector('[posX = "1"][posY="' + snakeCoordinates[1] + '"]'));
+      }//we change its coordinates
+    
+    }else if(direction=='left'){
+    if(snakeCoordinates[0]>1){//if the snake goes to the wall
+      snakeBody.unshift(document.querySelector('[posX = "' + (+snakeCoordinates[0] - 1) + '"][posY="' + snakeCoordinates[1] + '"]'));
+      } else{
+      snakeBody.unshift(document.querySelector('[posX = "10"][posY="' + snakeCoordinates[1] + '"]'));
+      }//we change its coordinates
+    
+    }else if(direction=='up'){
+      if(snakeCoordinates[1]<10){//if the snake goes to the wall
+        snakeBody.unshift(document.querySelector('[posX = "' + snakeCoordinates[0] + '"][posY="' +(+ snakeCoordinates[1]+1) + '"]'));
+        } else{
+        snakeBody.unshift(document.querySelector('[posX ="' + snakeCoordinates[0] + '"][posY="1"]'));
+        }//we change its coordinates
+      
+      }else if(direction=='down'){
+        if(snakeCoordinates[1]>1){//if the snake goes to the wall
+          snakeBody.unshift(document.querySelector('[posX = "' + snakeCoordinates[0] + '"][posY="' + (snakeCoordinates[1]-1) + '"]'));
+          } else{
+          snakeBody.unshift(document.querySelector('[posX = "' + snakeCoordinates[0] + '"][posY="10"]'));
+          }//we change its coordinates
+        }
 
-  if(snakeCoordinates[0]<10){//if the snake goes to the wall
-  snakeBody.unshift(document.querySelector('[posX = "' + (+snakeCoordinates[0] + 1) + '"][posY="' + snakeCoordinates[1] + '"]'));
-  } else{
-  snakeBody.unshift(document.querySelector('[posX = "1"][posY="' + snakeCoordinates[1] + '"]'));
-  }//we change its coordinates
+
+        //snake eats mouse
+      if (snakeBody[0].getAttribute('posX')== mouse.getAttribute('posX') && snakeBody[0].getAttribute('posY') == mouse.getAttribute('posY')){
+       mouse.classList.remove('mouse');
+       let a= snakeBody[snakeBody.length-1].getAttribute('posX');
+       let b= snakeBody[snakeBody.length-1].getAttribute('posY');
+      snakeBody.push(document.querySelector('[posX="' + a + '"][posY="' + b + '"]'));
+      createMouse();
+      }
+
+      if(snakeBody[0].classList.contains('snakeBody')){
+        clearInterval(interval);
+        snakeBody[0].style.backgroundColor = 'red';
+      }
 
   snakeBody[0].classList.add('snakeHead');//added classes new coordinates
   for(let i=0;i<snakeBody.length;i++){
     snakeBody[i].classList.add('snakeBody');
   }
+
 }
 let interval = setInterval(move,300)//interval for move
 
 //what happens under press on a key
 
-document.addEventListener('keyup',function (e) {
-  var key = e.key
-   if(key === 37){
-    console.log('37')
+document.addEventListener('keydown', function (event) {
+  if (event.defaultPrevented) {
+      return;
   }
+  var key = event.key ;
+ if (key === 'ArrowLeft' && direction!='right') {
+      direction='left';
+  }
+  else if(key === 'ArrowUp' && direction!='down') {
+    direction='up';
+  }
+  else if(key === 'ArrowRight' && direction!='left') {
+  direction='right';
+  }else if (key === 'ArrowDown' && direction!='up') {
+  direction='down';
+}
 });
+
