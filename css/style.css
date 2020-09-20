@@ -21,6 +21,11 @@ h1{
   box-shadow: rgb(56, 56, 56) 5px 10px 15px 10px;
   margin: 0 auto;
 }
+.elem{
+  height: 50px;
+  width:50px;
+  padding:5px;
+}
 .nav_elem{
   height: 20vh;
 }
