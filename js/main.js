@@ -120,7 +120,8 @@ function move(){
   for(let i=0;i<snakeBody.length;i++){
     snakeBody[i].classList.add('snakeBody');
   }
-
+  
+  steps=true;
 }
 let interval = setInterval(move,300)//interval for move
 
@@ -129,18 +130,26 @@ let interval = setInterval(move,300)//interval for move
 document.addEventListener('keydown', function (event) {
   if (event.defaultPrevented) {
       return;
+      
   }
   var key = event.key ;
- if (key === 'ArrowLeft' && direction!='right') {
+  if(steps == true){
+    if (key === 'ArrowLeft' && direction!='right') {
       direction='left';
+      steps = false;
   }
   else if(key === 'ArrowUp' && direction!='down') {
     direction='up';
+    steps = false;
   }
   else if(key === 'ArrowRight' && direction!='left') {
   direction='right';
+  steps = false;
   }else if (key === 'ArrowDown' && direction!='up') {
   direction='down';
+  steps = false;
 }
+  }
+ 
 });
 
